@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest using Vue</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style >
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+}
+body{
+     background-color: #8ff;
+ 
+}
+.heading {
+    text-align: center;
+    color: #588;
+    margin-top: 30px;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #588;
+    font-size: 30px;
+    font-weight: bolder;
+    margin-top: 60px;
+    padding: 20px;
+    border-radius: 15px;
+    color: wheat;
+    text-shadow: 1px 1px #45a,-1px -1px #45a;
+    text-align: center;
+
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    background-color: wheat;
+    color: #588;
+}
+input::placeholder{
+      color: #588;
+
+}
+#display{
+  font-size: 30px;
+  color: wheat;
+}
+</style>
+<body>
+    <div class="heading">
+    <h2>Simple Interest Calculator Using Vue</h2>
+    </div>
+    <div id="app" class="container">
+        <div>
+        <label>Principal</label>
+        <input class="principal" v-model.number="loan.principal" placeholder="Principal" type="number">
+        </div>
+
+        <div>
+        <label>Rate</label>
+        <input type="number" class="principal" placeholder="Rate" v-model.number="loan.rate">
+        </div>
+
+        <div>
+        <label>Time</label>
+        <input class="principal" placeholder="Time" type="number" v-model.number="loan.time">
+        </div>
+
+
+        <div id="display">
+            <span>The Simple Interest is {{result}}</span>
+        </div>
+    </div>
+
+    <script>
+       new Vue({
+           el: '#app',
+           data: {
+               loan: {
+                   principal: '',
+                   rate: '',
+                   time: ''
+               }
+           },
+           computed: {
+               result() {
+                let pr = this.loan.principal;
+                let ra = this.loan.rate;
+                let ti = this.loan.time;
+                return ((pr * ra * ti) / 100)
+               }
+           }
+                  })
+    </script>
+</body>
+</html>
